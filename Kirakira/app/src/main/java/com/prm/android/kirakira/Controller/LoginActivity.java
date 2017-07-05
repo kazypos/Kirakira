@@ -1,7 +1,9 @@
-package com.prm.android.kirakira;
+package com.prm.android.kirakira.Controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.prm.android.kirakira.R;
 
 public class LoginActivity extends AppCompatActivity {
 
