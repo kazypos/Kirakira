@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Kirakira</string>
+    <string name="my_preferences">My_Prefs</string>
+    <string name="username">user_account</string>
+    <string name="password">user_password</string>
+    <string name="save">user_loginstate</string>
+    <string name="id">user_id</string>
+    <string name="dialog_license_text">this is the license</string>
+    <string name="dialog_license_title">LICENSE</string>
+    <string name="dialog_error_title">ERROR</string>
+    <string name="dialog_error_text">You have to fill in all of the blanks</string>
 </resources>

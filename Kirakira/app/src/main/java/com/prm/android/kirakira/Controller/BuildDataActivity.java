@@ -61,7 +61,7 @@ public class BuildDataActivity extends AppCompatActivity {
         editTextShow = (EditText) findViewById(R.id.editTextShow);
         btnShow = (Button) findViewById(R.id.buttonShow);
 
-        lessonDAO = new LessonDAO();
+        lessonDAO = LessonDAO.getInst();
 
         listenRepeatDAO =  ListenRepeatDAO.getInst();
         listenChoiceDAO =  ListenChoiceDAO.getInst();

@@ -13,7 +13,7 @@ import io.realm.Realm;
 public class LessonDAO {
     private Realm realm;
 
-    public LessonDAO() {
+    private LessonDAO() {
         realm = Realm.getDefaultInstance();
     }
 

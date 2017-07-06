@@ -14,7 +14,7 @@ import io.realm.Realm;
 public class FillBlankDAO {
     private Realm realm;
 
-    public FillBlankDAO() {
+    private FillBlankDAO() {
         realm = Realm.getDefaultInstance();
     }
 
