@@ -3,19 +3,16 @@ package com.prm.android.kirakira.Model;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-/**
- * Created by kazy on 7/5/2017.
- */
+import java.io.Serializable;
 
-public class UserModel extends RealmObject{
+public class UserModel extends RealmObject implements Serializable{
     @PrimaryKey
     private String id;
     private String username;
     private String password;
     private String name;
 
-    public UserModel() {
-    }
+    public UserModel(){}
 
     public UserModel(String id, String username, String password, String name) {
         this.id = id;

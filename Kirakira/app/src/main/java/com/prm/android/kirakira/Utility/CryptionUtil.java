@@ -12,7 +12,7 @@ public class CryptionUtil {
         final String MD5 = "MD5";
         try {
             // Create MD5 Hash
-            MessageDigest digest = java.security.MessageDigest
+            MessageDigest digest = MessageDigest
                     .getInstance(MD5);
             digest.update(s.getBytes());
             byte messageDigest[] = digest.digest();
