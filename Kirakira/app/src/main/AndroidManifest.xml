@@ -22,6 +22,10 @@
         </activity>
         <activity android:name=".Controller.RegisterActivity">
         </activity>
+        <activity android:name=".Controller.BuildDataActivity">
+
+        </activity>
+
     </application>
 
 </manifest>
