@@ -22,7 +22,7 @@ public class ListenChoiceDAO {
 
     public static ListenChoiceDAO getInst() {
         if (inst == null) {
-            return new ListenChoiceDAO();
+            inst = new ListenChoiceDAO();
         }
         return inst;
     }

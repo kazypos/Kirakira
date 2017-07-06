@@ -14,6 +14,16 @@ public class UserModel extends RealmObject{
     private String password;
     private String name;
 
+    public UserModel() {
+    }
+
+    public UserModel(String id, String username, String password, String name) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -45,5 +55,10 @@ public class UserModel extends RealmObject{
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return id+"|"+username+"|"+name+":"+password;
     }
 }

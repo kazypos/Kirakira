@@ -21,7 +21,7 @@ public class LessonDAO {
 
     public static LessonDAO getInst() {
         if (inst == null) {
-            return new LessonDAO();
+            inst =  new LessonDAO();
         }
         return inst;
     }

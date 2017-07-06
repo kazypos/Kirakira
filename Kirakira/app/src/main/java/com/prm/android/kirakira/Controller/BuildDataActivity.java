@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.prm.android.kirakira.DAO.AuthenticationDAO;
 import com.prm.android.kirakira.DAO.FillBlankDAO;
 import com.prm.android.kirakira.DAO.LessonDAO;
 import com.prm.android.kirakira.DAO.ListenChoiceDAO;
@@ -40,6 +41,10 @@ public class BuildDataActivity extends AppCompatActivity {
     FillBlankDAO fillBlankDAO;
     LessonDAO lessonDAO;
 
+
+
+    AuthenticationDAO authenticationDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,30 +57,44 @@ public class BuildDataActivity extends AppCompatActivity {
                 realm.deleteAll();
             }
         });
-        lessonDAO = new LessonDAO();
-
-        listenRepeatDAO = new ListenRepeatDAO();
-        listenChoiceDAO = new ListenChoiceDAO();
-        fillBlankDAO = new FillBlankDAO();
-
 
         editTextShow = (EditText) findViewById(R.id.editTextShow);
-
-
-
         btnShow = (Button) findViewById(R.id.buttonShow);
+
+        lessonDAO = new LessonDAO();
+
+        listenRepeatDAO =  ListenRepeatDAO.getInst();
+        listenChoiceDAO =  ListenChoiceDAO.getInst();
+        fillBlankDAO =  FillBlankDAO.getInst();
+
+//        authenticationDAO = AuthenticationDAO.getInst();
+
+//        UserModel user = authenticationDAO.register(username, pass, name);
+//        if (user != null){
+//            editTextShow.append("dang ky"+user.toString()+"\n");
+//        } else {
+//            editTextShow.append("thong tin khong phu hop\n");
+//        }
+
         btnShow.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                addLesson();
-                showLesson();
-                addListenRepeat();
-                showListenRepeat();
-                addListenChoice();
-                showListenChoice();
-                addFillBlank();
-                showFillBlank();
+//                addLesson();
+//                showLesson();
+//                addListenRepeat();
+//                showListenRepeat();
+//                addListenChoice();
+//                showListenChoice();
+//                addFillBlank();
+//                showFillBlank();
+
+//                UserModel user = authenticationDAO.signIn(username, pass);
+//                if (user != null){
+//                    editTextShow.append("Dang nhap"+user.toString()+"\n");
+//                } else {
+//                    editTextShow.append("dang nhap that bai\n");
+//                }
             }
         });
     }

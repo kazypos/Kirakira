@@ -21,7 +21,7 @@ public class ListenRepeatDAO {
 
     public static ListenRepeatDAO getInst() {
         if (inst == null) {
-            return new ListenRepeatDAO();
+            inst = new ListenRepeatDAO();
         }
         return inst;
     }

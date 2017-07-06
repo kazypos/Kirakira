@@ -22,7 +22,7 @@ public class FillBlankDAO {
 
     public static FillBlankDAO getInst() {
         if (inst == null) {
-            return new FillBlankDAO();
+            inst = new FillBlankDAO();
         }
         return inst;
     }
