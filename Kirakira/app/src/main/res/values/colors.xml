@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="dialog_cancel_bgcolor">#ff0000</color>
-    <color name="dialog_ok_bgcolor">#00BFFF</color>
+    <color name="dialog_ok_bgcolor">#00bfff</color>
     <color name="green">#00ff00</color>
 </resources>

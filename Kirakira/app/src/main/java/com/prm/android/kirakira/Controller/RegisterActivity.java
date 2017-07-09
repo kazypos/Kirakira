@@ -1,18 +1,26 @@
 package com.prm.android.kirakira.Controller;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.constraint.ConstraintLayout;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import com.prm.android.kirakira.DAO.AuthenticationDAO;
 import com.prm.android.kirakira.Model.UserModel;
 import com.prm.android.kirakira.R;
 import com.prm.android.kirakira.Utility.DialogUtil;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener,
+public class RegisterActivity extends Activity implements View.OnClickListener,
         CheckBox.OnCheckedChangeListener {
+
+    ConstraintLayout layout;
 
     private EditText edtRegUsername;
     private EditText edtRegPassword;
@@ -61,6 +69,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        layout = (ConstraintLayout) findViewById(R.id.activity_register);
+        layout.setBackgroundResource(R.drawable.background);
 
         initData();
     }

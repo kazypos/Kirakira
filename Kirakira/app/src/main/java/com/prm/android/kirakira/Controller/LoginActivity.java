@@ -1,18 +1,20 @@
 package com.prm.android.kirakira.Controller;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.constraint.ConstraintLayout;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.prm.android.kirakira.DAO.AuthenticationDAO;
 import com.prm.android.kirakira.Model.UserModel;
@@ -24,8 +26,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends Activity implements View.OnClickListener {
 
+    ConstraintLayout layout;
 
     Button btnScreen8;
 
@@ -114,6 +117,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        layout = (ConstraintLayout) findViewById(R.id.loginLayout);
+        layout.setBackgroundResource(R.drawable.background);
+
         genKey();
         initPermission();
         initData();
@@ -131,7 +137,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void requestToLoginSuccessLayout(UserModel userModel) {
         Intent intent = new Intent();
         // TODO
-        intent.setClass(this, ListenAndRepeatActivity.class);
+        intent.setClass(this, LessonActivity.class);
         intent.putExtra("userId", userModel.getId());
         int random = (int) Math.random() * 2;
         random = random == 0 ? 1 : 2;
@@ -174,6 +180,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.tvForgotPassword:
+                Toast.makeText(this, "This function is developing.", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tvRegister:
                 intent.setClass(this, RegisterActivity.class);
