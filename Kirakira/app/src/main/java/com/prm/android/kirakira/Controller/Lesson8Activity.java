@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,10 +32,19 @@ public class Lesson8Activity extends AppCompatActivity {
     TextView[] textViewsAnswers;
     TextView[] textViewsQuestions;
 
+    ImageView imageView;
+
+    int score = 0;
+    boolean winner = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson8);
+
+        imageView = (ImageView)findViewById(R.id.imageView);
+        imageView.setVisibility(View.INVISIBLE);
 
         listFillBlankContentModel = FillBlankDAO.getInst().getAllFillBlankContentPractices(0);
 
@@ -72,10 +82,6 @@ public class Lesson8Activity extends AppCompatActivity {
         return arr;
     }
 
-    private void reset() {
-
-    }
-
     private final class ChoiceTouchListener implements View.OnTouchListener {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -107,8 +113,16 @@ public class Lesson8Activity extends AppCompatActivity {
                 case DragEvent.ACTION_DROP:
                     String dropId = drop.getTag().toString();
                     String dropTargetId = dropTarget.getTag().toString();
-
                     if (dropId.equalsIgnoreCase(dropTargetId)) {
+                        score+=1;
+                        if (score == 5) {
+                            imageView.setImageResource(R.drawable.smile);
+                            imageView.setVisibility(View.VISIBLE);
+                            winner = true;
+                            score = 0;
+                        } else {
+                            winner = false;
+                        }
                         view.setVisibility(View.INVISIBLE);
                         String complete = completeSentence(dropTarget.getText().toString(), drop.getText().toString());
                         dropTarget.setText(complete);

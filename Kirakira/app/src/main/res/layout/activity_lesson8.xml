@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.382" />
+        app:layout_constraintVertical_bias="0.39" />
 
     <TextView
         android:id="@+id/tvAnswer2"
@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintHorizontal_bias="0.025"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintVertical_bias="0.13" />
 
     <TextView
         android:id="@+id/tvAnswer3"
@@ -59,12 +59,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/tvAnswer2"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.14999998" />
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintVertical_bias="0.13" />
 
     <TextView
         android:id="@+id/tvAnswer4"
@@ -74,16 +74,16 @@
         android:layout_alignRight="@+id/tvAnswer3"
         android:layout_below="@+id/tvAnswer3"
         android:text="TextView"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvAnswer3"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvAnswer3"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.032"
-        app:layout_constraintVertical_bias="0.184" />
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintVertical_bias="0.2" />
 
     <TextView
         android:id="@+id/tvBlank1"
@@ -94,11 +94,11 @@
         android:layout_toRightOf="@+id/tvQuestion2"
         android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvAnswer1"
+        app:layout_constraintLeft_toRightOf="@+id/tvAnswer1"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.532" />
+        app:layout_constraintHorizontal_bias="0.385" />
 
     <TextView
         android:id="@+id/tvBlank2"
@@ -108,12 +108,12 @@
         android:layout_toEndOf="@+id/tvQuestion2"
         android:layout_toRightOf="@+id/tvQuestion2"
         android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvAnswer2"
+        app:layout_constraintLeft_toRightOf="@+id/tvAnswer2"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvAnswer2"
-        app:layout_constraintHorizontal_bias="0.532" />
+        app:layout_constraintHorizontal_bias="0.385" />
 
     <TextView
         android:id="@+id/tvBlank3"
@@ -123,56 +123,67 @@
         android:layout_toEndOf="@+id/tvQuestion3"
         android:layout_toRightOf="@+id/tvQuestion3"
         android:text="TextView"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvAnswer3"
-        app:layout_constraintHorizontal_bias="0.532" />
-
-    <TextView
-        android:id="@+id/tvBlank4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvQuestion4"
-        android:layout_toEndOf="@+id/tvQuestion4"
-        android:layout_toRightOf="@+id/tvQuestion4"
-        android:text="TextView"
-        android:layout_marginEnd="71dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvAnswer4"
-        app:layout_constraintHorizontal_bias="0.619" />
+        app:layout_constraintLeft_toRightOf="@+id/tvAnswer3"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.385" />
 
     <TextView
         android:id="@+id/tvAnswer5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvAnswer4"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvAnswer4"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintHorizontal_bias="0.025"
-        app:layout_constraintVertical_bias="0.32999998" />
+        app:layout_constraintVertical_bias="0.34" />
 
     <TextView
         android:id="@+id/tvBlank5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        app:layout_constraintLeft_toRightOf="@+id/tvAnswer5"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvAnswer5"
-        app:layout_constraintHorizontal_bias="0.535" />
+        app:layout_constraintHorizontal_bias="0.385" />
+
+    <TextView
+        android:id="@+id/tvBlank4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvAnswer4"
+        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintLeft_toRightOf="@+id/tvAnswer4"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvBlank1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.893"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
 </android.support.constraint.ConstraintLayout>
 
