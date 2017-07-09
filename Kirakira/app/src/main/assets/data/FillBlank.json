@@ -3,20 +3,24 @@
     "time":"5",
     "texts":[
       {
-        "question":"Em chín.",
+        "question":"Em năm nay 7 __",
         "answer":"tuổi"
       },
       {
-        "question":"Em tám.",
-        "answer":"choi"
+        "question":" Hôm nay là thứ __",
+        "answer":"ba"
       },
       {
-        "question":"Em bảy.",
-        "answer":"hoc"
+        "question":"__ gần Trung Quốc",
+        "answer":"Việt Nam"
       },
       {
-        "question":"Em sáu.",
-        "answer":"an"
+        "question":"Tôi __ cô",
+        "answer":"yêu"
+      },
+      {
+        "question":"Việt Nam là 1 __ rừng vàng biển bạc",
+        "answer":"quốc gia"
       }
     ]
   },

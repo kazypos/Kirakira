@@ -1,8 +1,10 @@
 package com.prm.android.kirakira.Controller;
 
 import android.content.ClipData;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,6 +16,8 @@ import com.prm.android.kirakira.Model.FillBlankContentModel;
 import com.prm.android.kirakira.Model.FillBlankModel;
 import com.prm.android.kirakira.R;
 
+import org.w3c.dom.Text;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -24,56 +28,38 @@ public class Lesson8Activity extends AppCompatActivity {
     List<FillBlankModel> listFillBlankModel;
     List<FillBlankContentModel> listFillBlankContentModel;
 
-    TextView[] textViews;
-
-    TextView tvBlank1;
-    TextView tvBlank2;
+    TextView[] textViewsAnswers;
+    TextView[] textViewsQuestions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson8);
 
-        //test
-        tvBlank1 = (TextView)findViewById(R.id.tvBlank1);
-        tvBlank2 = (TextView)findViewById(R.id.tvBlank2);
-
         listFillBlankContentModel = FillBlankDAO.getInst().getAllFillBlankContentPractices(0);
 
-        textViews = new TextView[4];
-        Integer[] randomIndexList = random(textViews.length);
-        for(int i  = 0; i < textViews.length; i++) {
-            String tViewId = "tvAnswer" + (i+1);
+        textViewsAnswers = new TextView[listFillBlankContentModel.size()];
+        Integer[] randomIndexAnswer = random(textViewsAnswers.length);
+        //set answers
+        for (int i = 0; i < textViewsAnswers.length; i++) {
+            String tViewId = "tvAnswer" + (i + 1);
             int id = getResources().getIdentifier(tViewId, "id", getPackageName());
-            textViews[i] = ((TextView) findViewById(id));
-            textViews[i].setOnTouchListener(new ChoiceTouchListener());
-            textViews[i].setText(listFillBlankContentModel.get(randomIndexList[i]).getAnswer().toString());
+            textViewsAnswers[i] = ((TextView) findViewById(id));
+            textViewsAnswers[i].setText(listFillBlankContentModel.get(randomIndexAnswer[i]).getAnswer().toString());
+            textViewsAnswers[i].setTag(listFillBlankContentModel.get(randomIndexAnswer[i]).getId());
+            textViewsAnswers[i].setOnTouchListener(new ChoiceTouchListener());
         }
-
-        tvBlank1.setOnDragListener(new View.OnDragListener() {
-            @Override
-            public boolean onDrag(View v, DragEvent event) {
-                int action = event.getAction();
-                switch (action) {
-                    case DragEvent.ACTION_DRAG_STARTED:
-                        break;
-                    case DragEvent.ACTION_DRAG_EXITED:
-                        break;
-                    case DragEvent.ACTION_DRAG_ENTERED:
-                        break;
-                    case DragEvent.ACTION_DROP: {
-                        tvBlank2.setText("Droped");
-                        return true;
-                    }
-                    case DragEvent.ACTION_DRAG_ENDED:
-                        tvBlank2.setText("Ended");
-                        return true;
-                    default:
-                        break;
-                }
-                return true;
-            }
-        });
+        //set questions
+        textViewsQuestions = new TextView[listFillBlankContentModel.size()];
+        Integer[] randomIndexQuestion = random(textViewsAnswers.length);
+        for (int i = 0; i < textViewsAnswers.length; i++) {
+            String tViewId = "tvBlank" + (i + 1);
+            int id = getResources().getIdentifier(tViewId, "id", getPackageName());
+            textViewsAnswers[i] = ((TextView) findViewById(id));
+            textViewsAnswers[i].setText(listFillBlankContentModel.get(randomIndexQuestion[i]).getQuestion().toString());
+            textViewsAnswers[i].setTag(listFillBlankContentModel.get(randomIndexQuestion[i]).getId());
+            textViewsAnswers[i].setOnDragListener(new ChoiceDragListener());
+        }
     }
 
     private Integer[] random(int max) {
@@ -86,20 +72,62 @@ public class Lesson8Activity extends AppCompatActivity {
         return arr;
     }
 
+    private void reset() {
+
+    }
+
     private final class ChoiceTouchListener implements View.OnTouchListener {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-                //start dragging the item touched
                 v.startDrag(data, shadowBuilder, v, 0);
-                v.setVisibility(View.INVISIBLE);
+                //v.setVisibility(View.INVISIBLE);
                 return true;
             } else {
                 return false;
             }
         }
+    }
+
+    private class ChoiceDragListener implements View.OnDragListener {
+        @Override
+        public boolean onDrag(View v, DragEvent event) {
+            View view = (View) event.getLocalState();
+            TextView drop = (TextView) view;
+            TextView dropTarget = (TextView) v;
+            switch (event.getAction()) {
+                case DragEvent.ACTION_DRAG_STARTED:
+                    break;
+                case DragEvent.ACTION_DRAG_ENTERED:
+                    break;
+                case DragEvent.ACTION_DRAG_EXITED:
+                    break;
+                case DragEvent.ACTION_DROP:
+                    String dropId = drop.getTag().toString();
+                    String dropTargetId = dropTarget.getTag().toString();
+
+                    if (dropId.equalsIgnoreCase(dropTargetId)) {
+                        view.setVisibility(View.INVISIBLE);
+                        String complete = completeSentence(dropTarget.getText().toString(), drop.getText().toString());
+                        dropTarget.setText(complete);
+                        dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
+                    } else {
+                        view.setVisibility(View.VISIBLE);
+                        drop.setVisibility(View.VISIBLE);
+                    }
+                    break;
+                case DragEvent.ACTION_DRAG_ENDED:
+                    break;
+            }
+            return true;
+        }
+    }
+
+    private String completeSentence(String question, String answer) {
+        String completeQuestion = question.replace("__", answer);
+        return completeQuestion;
     }
 
 
