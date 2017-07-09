@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.prm.android.kirakira.DAO.AuthenticationDAO;
 import com.prm.android.kirakira.Model.UserModel;
 import com.prm.android.kirakira.R;
@@ -21,6 +22,7 @@ import com.prm.android.kirakira.Utility.SharePreferencesUtil;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 

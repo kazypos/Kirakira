@@ -163,7 +163,7 @@ public class DBConfigration extends Application {
                 for (int j = 0; j < listenRepeatContents.length(); j++) {
                     Log.i("json object:", listenRepeatContents.get(j).toString());
 
-                    listenRepeatDAO.addListenRepeatPractice(new ListenRepeatModel(id,i+1,listenRepeatContents.get(j).toString()));
+                    listenRepeatDAO.addListenRepeatPractice(new ListenRepeatModel(id,i+1,listenRepeatContents.get(j).toString(), true));
 
                     id++;
                 }
