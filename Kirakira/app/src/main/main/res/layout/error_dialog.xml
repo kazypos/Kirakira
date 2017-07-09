@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ScrollView
+            android:id="@+id/scrollId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+        <TextView
+                android:id="@+id/dialog_info_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+        />
+    </ScrollView>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+            android:layout_below="@id/scrollId">
+
+        <Button
+                android:id="@+id/dialog_ok"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.50"
+                android:background="@color/dialog_cancel_bgcolor"
+                android:text="Ok"/>
+    </LinearLayout>
+</RelativeLayout>
+

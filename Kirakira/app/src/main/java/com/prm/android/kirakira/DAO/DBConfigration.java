@@ -162,7 +162,9 @@ public class DBConfigration extends Application {
                 JSONArray listenRepeatContents = listenRepeats.getJSONArray(i);
                 for (int j = 0; j < listenRepeatContents.length(); j++) {
                     Log.i("json object:", listenRepeatContents.get(j).toString());
+
                     listenRepeatDAO.addListenRepeatPractice(new ListenRepeatModel(id,i+1,listenRepeatContents.get(j).toString()));
+
                     id++;
                 }
             }
