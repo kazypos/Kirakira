@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import com.prm.android.kirakira.DAO.AuthenticationDAO;
 import com.prm.android.kirakira.Model.UserModel;
@@ -22,6 +23,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+
+
+    Button btnScreen8;
+
+    private static List<String> permissions;
 
     private AuthenticationDAO dao;
     private EditText edtUserNameLogin;
@@ -109,6 +115,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         genKey();
         initPermission();
         initData();
+
+        btnScreen8 = (Button)findViewById(R.id.btnTest);
+        btnScreen8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), Lesson8Activity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void requestToLoginSuccessLayout(UserModel userModel) {
