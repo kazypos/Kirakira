@@ -2,50 +2,75 @@ package com.prm.android.kirakira.Controller;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.prm.android.kirakira.DAO.AuthenticationDAO;
 import com.prm.android.kirakira.Model.UserModel;
 import com.prm.android.kirakira.R;
 import com.prm.android.kirakira.Utility.DialogUtil;
 import com.prm.android.kirakira.Utility.SharePreferencesUtil;
 
-import java.util.ArrayList;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+
     Button btnScreen8;
 
     private static List<String> permissions;
+
     private AuthenticationDAO dao;
     private EditText edtUserNameLogin;
     private EditText edtPasswordLogin;
     private DialogUtil dialogUtil;
 
-    static {
-        permissions = new ArrayList<>();
-        permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
-        permissions.add(Manifest.permission.RECORD_AUDIO);
+    private void genKey() {
+        PackageInfo info;
+        try {
+            PackageManager pm = getPackageManager();
+            info = pm.getPackageInfo("com.prm.android.kirakira", PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md;
+                md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String something = new String(Base64.encode(md.digest(), 0));
+                //String something = new String(Base64.encodeBytes(md.digest()));
+                Log.e("hash key", something);
+            }
+        } catch (PackageManager.NameNotFoundException e1) {
+            Log.e("name not found", e1.toString());
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("no such an algorithm", e.toString());
+        } catch (Exception e) {
+            Log.e("exception", e.toString());
+        }
     }
 
     private void initPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            for (String permission : permissions)
-                if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-                    requestPermissions(new String[]{permission}, 1);
-                }
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            } else if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 1);
+            } else if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            }
         }
     }
 
     private void initData() {
-
 
         // init the password edit-text
         edtPasswordLogin = (EditText) findViewById(R.id.edtPasswordLogin);
@@ -77,8 +102,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         }
 
-        Intent intent = new Intent();
-        if(intent.getStringExtra("username") != null){
+        Intent intent = getIntent();
+        if (intent.getStringExtra("username") != null) {
             edtUserNameLogin.setText(intent.getStringExtra("username"));
             edtPasswordLogin.setText(intent.getStringExtra("password"));
         }
@@ -89,6 +114,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        genKey();
         initPermission();
         initData();
 
@@ -105,10 +131,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void requestToLoginSuccessLayout(UserModel userModel) {
         Intent intent = new Intent();
         // TODO
-//          intent.setClass(this, );
-        intent.putExtra("userModel", userModel);
-//          startActionMode(intent);
-//          finish();
+        intent.setClass(this, ListenAndRepeatActivity.class);
+        intent.putExtra("userId", userModel.getId());
+        int random = (int) Math.random() * 2;
+        random = random == 0 ? 1 : 2;
+        intent.putExtra("listenLevel", random);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -137,6 +166,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 UserModel userModel = dao.signIn(user_account, user_password);
                 if (userModel != null) {
+                    UserModel user = new UserModel();
+                    user.setUsername(user_account);
+                    user.setPassword(user_password);
+                    SharePreferencesUtil.setSharedPreferences(this, user);
                     requestToLoginSuccessLayout(userModel);
                 }
                 break;

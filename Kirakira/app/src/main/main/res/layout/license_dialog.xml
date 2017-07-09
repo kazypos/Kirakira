@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ScrollView
+            android:id="@+id/scrollId"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+        <TextView
+                android:id="@+id/dialog_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/dialog_license_text"/>
+    </ScrollView>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+            android:layout_below="@id/scrollId">
+
+        <Button
+                android:id="@+id/dialog_ignore"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.50"
+                android:background="@color/dialog_cancel_bgcolor"
+                android:text="Ignore"/>
+
+        <Button
+                android:id="@+id/dialog_accept"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.50"
+                android:background="@color/dialog_ok_bgcolor"
+                android:text="Accept"/>
+    </LinearLayout>
+</RelativeLayout>
+
