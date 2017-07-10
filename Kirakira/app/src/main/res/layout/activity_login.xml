@@ -150,12 +150,5 @@
         app:layout_constraintLeft_toLeftOf="@+id/btnLogin"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"/>
 
-    <Button
-        android:id="@+id/btnTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Screen8"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="-3dp"/>
 </android.support.constraint.ConstraintLayout>
 

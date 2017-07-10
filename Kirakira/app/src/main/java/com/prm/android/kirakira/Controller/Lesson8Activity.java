@@ -41,6 +41,7 @@ public class Lesson8Activity extends AppCompatActivity {
     int score = 0;
     boolean winner = false;
 
+    CountDownTimer timeDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class Lesson8Activity extends AppCompatActivity {
         int level = getIntent().getIntExtra("LEVEL",2);
         listFillBlankContentModel = FillBlankDAO.getInst().getAllFillBlankContentPractices(level);
 
-        new CountDownTimer(45000, 1000) {
+        timeDown = new CountDownTimer(45000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 String time = String.valueOf(millisUntilFinished / 1000);
@@ -70,7 +71,8 @@ public class Lesson8Activity extends AppCompatActivity {
                 imageView.setVisibility(View.VISIBLE);
                 tvCountDown.setVisibility(View.INVISIBLE);
             }
-        }.start();
+        };
+        timeDown.start();
 
 //        timer = new Timer();
 //        timer.schedule(new TimerTask() {
@@ -125,7 +127,8 @@ public class Lesson8Activity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        timer.cancel();
+        timeDown.cancel();
+       // timer.cancel();
     }
 
     private Integer[] random(int max) {

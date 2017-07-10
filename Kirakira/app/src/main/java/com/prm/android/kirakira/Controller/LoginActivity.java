@@ -65,9 +65,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-            } else if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            }
+            if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 1);
-            } else if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            }
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             }
         }
@@ -98,9 +100,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         UserModel userModel = SharePreferencesUtil.getCurrentUser(this);
         if (userModel != null) {
             if (dao.signIn(userModel.getUsername(), userModel.getPassword()) != null) {
-                userModel = dao.getUserByUsername(userModel.getUsername());
-                SharePreferencesUtil.setSharedPreferences(this,
-                        userModel);
                 requestToLoginSuccessLayout(userModel);
             }
         }
@@ -124,17 +123,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         initPermission();
         initData();
 
-        btnScreen8 = (Button)findViewById(R.id.btnTest);
-        btnScreen8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Lesson8Activity.class);
-                startActivity(i);
-            }
-        });
+
     }
 
     private void requestToLoginSuccessLayout(UserModel userModel) {
+        SharePreferencesUtil.setSharedPreferences(this, userModel);
         Intent intent = new Intent();
         // TODO
         intent.setClass(this, LessonActivity.class);
@@ -172,7 +165,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     UserModel user = new UserModel();
                     user.setUsername(user_account);
                     user.setPassword(user_password);
-                    SharePreferencesUtil.setSharedPreferences(this, user);
+                    user.setId(userModel.getId());
                     requestToLoginSuccessLayout(user);
                 }
                 break;
