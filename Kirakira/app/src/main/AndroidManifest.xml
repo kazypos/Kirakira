@@ -13,9 +13,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Controller.LauncherActivity">
-        </activity>
         <activity android:name=".Controller.LoginActivity">
+
+        </activity>
+
+        <activity android:name=".Controller.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
