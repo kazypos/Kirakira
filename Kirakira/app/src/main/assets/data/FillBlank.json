@@ -2,110 +2,47 @@
   {
     "time":"5",
     "texts":[
-      {
-        "question":"Em năm nay 7 __",
-        "answer":"tuổi"
-      },
-      {
-        "question":" Hôm nay là thứ __",
-        "answer":"ba"
-      },
-      {
-        "question":"__ gần Trung Quốc",
-        "answer":"Việt Nam"
-      },
-      {
-        "question":"Tôi __ cô",
-        "answer":"yêu"
-      },
-      {
-        "question":"Việt Nam là 1 __ rừng vàng biển bạc",
-        "answer":"quốc gia"
-      }
-    ]
+  {
+    "question":"Em năm nay 7 __",
+    "answer":"tuổi"
   },
   {
-    "time":"7",
-    "texts":[
-      {
-        "question":"Em chín.1111",
-        "answer":"tuổi"
-      },
-      {
-        "question":"Em tám.1111",
-        "answer":"tuổi"
-      },
-      {
-        "question":"Em bảy.1111",
-        "answer":"tuổi"
-      },
-      {
-        "question":"Em sáu.11111",
-        "answer":"tuổi"
-      }
-    ]
+    "question":" Hôm nay là thứ __",
+    "answer":"ba"
   },
   {
-    "time":"7",
-    "texts":[
-      {
-        "question":"Em chín.1111",
-        "answer":"tuổi"
-      },
-      {
-        "question":"Em tám.1111",
-        "answer":"tuổi"
-      },
-      {
-        "question":"Em bảy.1111",
-        "answer":"tuổi"
-      },
-      {
-        "question":"Em sáu.11111",
-        "answer":"tuổi"
-      }
-    ]
+    "question":"__ gần Trung Quốc",
+    "answer":"Việt Nam"
   },
   {
-    "time":"7",
-    "texts":[
-      {
-        "question":"Em chín.1111",
-        "answer":"tuổi"
-      },
-      {
-        "question":"Em tám.1111",
-        "answer":"tuổi"
-      },
-      {
-        "question":"Em bảy.1111",
-        "answer":"tuổi"
-      },
-      {
-        "question":"Em sáu.11111",
-        "answer":"tuổi"
-      }
-    ]
+    "question":"Tôi __ cô",
+    "answer":"yêu"
   },
   {
-    "time":"7",
-    "texts":[
-      {
-        "question":"Em chín.1111",
-        "answer":"tuổi"
-      },
-      {
-        "question":"Em tám.1111",
-        "answer":"tuổi"
-      },
-      {
-        "question":"Em bảy.1111",
-        "answer":"tuổi"
-      },
-      {
-        "question":"Em sáu.11111",
-        "answer":"tuổi"
-      }
-    ]
+    "question":"Việt Nam là 1 __ rừng vàng biển bạc",
+    "answer":"quốc gia"
   }
+]
+},
+{
+"time":"7",
+"texts":[
+{
+"question":"Em chín.1111",
+"answer":"tuổi"
+},
+{
+"question":"Em tám.1111",
+"answer":"tuổi"
+},
+{
+"question":"Em bảy.1111",
+"answer":"tuổi"
+},
+{
+"question":"Em sáu.11111",
+"answer":"tuổi"
+}
+]
+}
 ]

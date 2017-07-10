@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.prm.android.kirakira.DAO.LessonDAO;
 import com.prm.android.kirakira.Model.LessonModel;
@@ -63,6 +64,11 @@ public class LessonActivity extends Activity {
     }
 
     void gotoPracticeView(int type){
+        if  (type == 1){
+            Toast.makeText(this, "This function is developing.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Intent intent = new Intent();
         intent.setClass(LessonActivity.this, PracticeActivity.class);
         intent.putExtra("LESSON_TYPE",type);

@@ -1,41 +1,31 @@
 package com.prm.android.kirakira.Controller;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.ClipData;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.lzyzsd.circleprogress.ArcProgress;
-import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.prm.android.kirakira.DAO.FillBlankDAO;
 import com.prm.android.kirakira.Model.FillBlankContentModel;
 import com.prm.android.kirakira.Model.FillBlankModel;
 import com.prm.android.kirakira.R;
 
-import org.w3c.dom.Text;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class Lesson8Activity extends AppCompatActivity {
 
     private Timer timer;
-    private DonutProgress donutProgress;
+   // private DonutProgress donutProgress;
 
     FillBlankDAO fillBlankDAO;
     List<FillBlankModel> listFillBlankModel;
@@ -66,7 +56,7 @@ public class Lesson8Activity extends AppCompatActivity {
         int level = getIntent().getIntExtra("LEVEL",2);
         listFillBlankContentModel = FillBlankDAO.getInst().getAllFillBlankContentPractices(level);
 
-        new CountDownTimer(11000, 1000) {
+        new CountDownTimer(45000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 String time = String.valueOf(millisUntilFinished / 1000);

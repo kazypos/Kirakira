@@ -37,6 +37,7 @@
         android:hint="Enter your username"
         android:inputType="textPersonName"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
         app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -58,13 +59,14 @@
         android:hint="Enter your password"
         android:inputType="textPassword"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtRegUsername"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintHorizontal_bias="0.0"/>
+        tools:layout_constraintRight_creator="1"/>
 
     <EditText
         android:id="@+id/edtRegConfirmPassword"
@@ -79,13 +81,14 @@
         android:hint="Confirm your password"
         android:inputType="textPassword"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtRegPassword"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintHorizontal_bias="0.0"/>
+        tools:layout_constraintRight_creator="1"/>
 
     <EditText
         android:id="@+id/edtRegFullname"
@@ -100,11 +103,12 @@
         android:hint="Your full name"
         android:inputType="textPersonName"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtRegConfirmPassword"
-        app:layout_constraintHorizontal_bias="0.0"/>
+        app:layout_constraintTop_toBottomOf="@+id/edtRegConfirmPassword"/>
 
     <CheckBox
         android:id="@+id/cbRegLicense"
