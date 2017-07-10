@@ -10,26 +10,14 @@ import io.realm.annotations.PrimaryKey;
 public class ListenRepeatModel extends RealmObject {
     @PrimaryKey
     private int id;
-    private int level;
-    private String question;
-    private boolean isDefault;
+    private String name;
 
     public ListenRepeatModel() {
     }
 
-    public ListenRepeatModel(int id, int level, String question, boolean isDefault) {
+    public ListenRepeatModel(int id, String name) {
         this.id = id;
-        this.level = level;
-        this.question = question;
-        this.setDefault(isDefault);
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
+        this.name = name;
     }
 
     public int getId() {
@@ -40,24 +28,18 @@ public class ListenRepeatModel extends RealmObject {
         this.id = id;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getName() {
+        return name;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return question;
+        return name;
     }
 
-    public boolean isDefault() {
-        return isDefault;
-    }
 
-    public void setDefault(boolean aDefault) {
-        isDefault = aDefault;
-    }
 }

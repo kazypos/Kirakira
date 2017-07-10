@@ -8,6 +8,7 @@ import com.prm.android.kirakira.Model.FillBlankModel;
 import com.prm.android.kirakira.Model.LessonModel;
 import com.prm.android.kirakira.Model.ListenChoiceContentModel;
 import com.prm.android.kirakira.Model.ListenChoiceModel;
+import com.prm.android.kirakira.Model.ListenRepeatContentModel;
 import com.prm.android.kirakira.Model.ListenRepeatModel;
 
 import org.json.JSONArray;
@@ -159,11 +160,15 @@ public class DBConfigration extends Application {
             int id = 0;
             for (int i=0;i<listenRepeats.length();i++){
                 Log.i("json data:", listenRepeats.get(i).toString());
+
+                ListenRepeatModel listenRepeatModel = new ListenRepeatModel(i,"Practice "+(i+1));
+                listenRepeatDAO.addListenRepeatPractice(listenRepeatModel);
+
                 JSONArray listenRepeatContents = listenRepeats.getJSONArray(i);
                 for (int j = 0; j < listenRepeatContents.length(); j++) {
-                    Log.i("json object:", listenRepeatContents.get(j).toString());
+                    Log.i("DEBUGREPEAT======:", listenRepeatContents.get(j).toString());
 
-                    listenRepeatDAO.addListenRepeatPractice(new ListenRepeatModel(id,i+1,listenRepeatContents.get(j).toString(), true));
+                    listenRepeatDAO.addListenRepeatContentPractice(new ListenRepeatContentModel(j+(i*listenRepeatContents.length()),i,listenRepeatContents.get(j).toString()));
 
                     id++;
                 }

@@ -1,5 +1,6 @@
 package com.prm.android.kirakira.DAO;
 
+import com.prm.android.kirakira.Model.ListenRepeatContentModel;
 import com.prm.android.kirakira.Model.ListenRepeatModel;
 
 import java.util.List;
@@ -31,13 +32,18 @@ public class ListenRepeatDAO {
         realm.copyToRealmOrUpdate(model);
         realm.commitTransaction();
     }
+    public void addListenRepeatContentPractice(ListenRepeatContentModel model) {
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(model);
+        realm.commitTransaction();
+    }
 
     public List<ListenRepeatModel> getAllListenRepeatPractices() {
         return realm.where(ListenRepeatModel.class).findAll();
     }
 
-    public List<ListenRepeatModel> getAllListenRepeatByLevel(int level) {
-        return realm.where(ListenRepeatModel.class).equalTo("level", level).findAll();
+    public List<ListenRepeatContentModel> getAllListenRepeatContentsPractice(int byListenRepeatId) {
+        return realm.where(ListenRepeatContentModel.class).equalTo("listenRepeatId", byListenRepeatId).findAll();
     }
 
     public ListenRepeatModel getListenRepeatPracticeByID(int id) {

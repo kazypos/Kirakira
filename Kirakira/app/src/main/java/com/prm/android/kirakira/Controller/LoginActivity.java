@@ -138,10 +138,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         Intent intent = new Intent();
         // TODO
         intent.setClass(this, LessonActivity.class);
-        intent.putExtra("userId", userModel.getId());
-        int random = (int) Math.random() * 2;
-        random = random == 0 ? 1 : 2;
-        intent.putExtra("listenLevel", random);
+
         startActivity(intent);
         finish();
     }
@@ -176,7 +173,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     user.setUsername(user_account);
                     user.setPassword(user_password);
                     SharePreferencesUtil.setSharedPreferences(this, user);
-                    requestToLoginSuccessLayout(userModel);
+                    requestToLoginSuccessLayout(user);
                 }
                 break;
             case R.id.tvForgotPassword:

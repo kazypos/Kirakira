@@ -6,11 +6,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.*;
-import com.prm.android.kirakira.DAO.AuthenticationDAO;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import com.prm.android.kirakira.DAO.ListenRepeatDAO;
-import com.prm.android.kirakira.Model.ListenRepeatModel;
-import com.prm.android.kirakira.Model.UserModel;
+import com.prm.android.kirakira.Model.ListenRepeatContentModel;
 import com.prm.android.kirakira.R;
 import com.prm.android.kirakira.Utility.AsyncTaskPlayReorder;
 import com.prm.android.kirakira.Utility.MediaUtil;
@@ -44,11 +47,12 @@ public class ListenAndRepeatActivity extends AppCompatActivity implements View.O
 
         Intent intent = getIntent();
 
-        UserModel userModel = AuthenticationDAO.getInst().getUserById(intent.getStringExtra("userId"));
-        Toast.makeText(this, "Welcome " + userModel.getName(), Toast.LENGTH_SHORT).show();
+//        UserModel userModel = AuthenticationDAO.getInst().getUserById(intent.getStringExtra("userId"));
+//        Toast.makeText(this, "Welcome " + userModel.getName(), Toast.LENGTH_SHORT).show();
 
-        int level = intent.getIntExtra("listenLevel", 1);
-        List<ListenRepeatModel> strings = ListenRepeatDAO.getInst().getAllListenRepeatByLevel(level);
+        int level = intent.getIntExtra("LEVEL", 0);
+        List<ListenRepeatContentModel> strings = ListenRepeatDAO.getInst().getAllListenRepeatContentsPractice(level);
+        Toast.makeText(this, level+"Co "+ strings.size(), Toast.LENGTH_SHORT).show();
         listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, strings));
 
         btnplayRecord = (Button) findViewById(R.id.btnPlayRecord);

@@ -38,7 +38,8 @@ public class Lesson8Activity extends AppCompatActivity {
         tvBlank1 = (TextView)findViewById(R.id.tvBlank1);
         tvBlank2 = (TextView)findViewById(R.id.tvBlank2);
 
-        listFillBlankContentModel = FillBlankDAO.getInst().getAllFillBlankContentPractices(0);
+        int level = getIntent().getIntExtra("LEVEL",2);
+        listFillBlankContentModel = FillBlankDAO.getInst().getAllFillBlankContentPractices(level);
 
         textViews = new TextView[4];
         Integer[] randomIndexList = random(textViews.length);

@@ -1,11 +1,11 @@
 [
   [
         "Chào bạn.",
-        "Chào anh.",
-        "Chào chị.",
-        "Bạn tên là gì?",
-        "Tôi tên là Nam"
-  ]
+  "Chào anh.",
+  "Chào chị.",
+  "Bạn tên là gì?",
+  "Tôi tên là Nam"
+]
   ,
   [
         "Chào bạn. Bạn tên là gì?",
@@ -13,5 +13,20 @@
         "Xin chào, tôi có thể giúp gì cho bạn?",
         "Bạn tên là gì? Tôi tên là Nam.",
         "Tôi tên là Nam. Rất vui khi được gặp bạn"
+  ]
+,
+  [
+    "tes 3Chào bạn. Bạn tên là gì?",
+    "Chào anh. Anh đang đi đâu đấy?",
+    "Xin chào, tôi có thể giúp gì cho bạn?",
+    "Bạn tên là gì? Tôi tên là Nam.",
+    "Tôi tên là Nam. Rất vui khi được gặp bạn"
+  ] ,
+  [
+    " test 4Chào bạn. Bạn tên là gì?",
+    "Chào anh. Anh đang đi đâu đấy?",
+    "Xin chào, tôi có thể giúp gì cho bạn?",
+    "Bạn tên là gì? Tôi tên là Nam.",
+    "Tôi tên là Nam. Rất vui khi được gặp bạn"
   ]
 ]

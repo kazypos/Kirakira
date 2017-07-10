@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
 
 import com.prm.android.kirakira.DAO.LessonDAO;
 import com.prm.android.kirakira.Model.LessonModel;
@@ -13,11 +13,13 @@ import com.prm.android.kirakira.R;
 
 import java.util.List;
 
-public class LessonActivity extends Activity implements View.OnClickListener{
+public class LessonActivity extends Activity {
     LessonDAO lessonDAO;
     List<LessonModel> listLesson;
 
     ConstraintLayout layout;
+
+    Button btnListenRepeat,btnListenChoice,btnFillBlank;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,26 +31,42 @@ public class LessonActivity extends Activity implements View.OnClickListener{
         lessonDAO = LessonDAO.getInst();
 
         listLesson = lessonDAO.getAllLessons();
+
+        btnListenRepeat = (Button) findViewById(R.id.buttonListenRepeat);
+        btnListenChoice = (Button) findViewById(R.id.buttonListenChoice);
+        btnFillBlank = (Button) findViewById(R.id.buttonFillBlank);
+
+        btnListenRepeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                gotoPracticeView(0);
+            }
+        });
+
+        btnListenChoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                gotoPracticeView(1);
+            }
+        });
+
+        btnFillBlank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                gotoPracticeView(2);
+            }
+        });
+
     }
 
-    @Override
-    public void onClick(View v) {
+    void gotoPracticeView(int type){
         Intent intent = new Intent();
-        int widgetId = v.getId();
-        switch (widgetId) {
-            case R.id.buttonListenRepeat:
-                intent.setClass(this, ListenAndRepeatActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.buttonListenChoice:
-                Toast.makeText(this, "This lesson is developing.", Toast.LENGTH_SHORT).show();
-//                intent.setClass(this, ListenAndRepeatActivity.class);
-//                startActivity(intent);
-                break;
-            case R.id.buttonFillBlank:
-                intent.setClass(this, Lesson8Activity.class);
-                startActivity(intent);
-                break;
-        }
+        intent.setClass(LessonActivity.this, PracticeActivity.class);
+        intent.putExtra("LESSON_TYPE",type);
+        startActivity(intent);
     }
+
 }
