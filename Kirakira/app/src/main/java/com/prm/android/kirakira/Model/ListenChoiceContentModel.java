@@ -48,6 +48,6 @@ public class ListenChoiceContentModel extends RealmObject {
 
     @Override
     public String toString() {
-        return id+"|"+listenChoiceId+"|"+text;
+        return text;
     }
 }

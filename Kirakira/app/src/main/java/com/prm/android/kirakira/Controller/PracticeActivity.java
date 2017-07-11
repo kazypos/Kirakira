@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.prm.android.kirakira.DAO.FillBlankDAO;
 import com.prm.android.kirakira.DAO.ListenChoiceDAO;
@@ -89,7 +88,7 @@ public class PracticeActivity extends Activity {
                 intent.setClass(PracticeActivity.this, ListenAndRepeatActivity.class);
                 break;
             case 1:
-                Toast.makeText(this, "This function is developing.", Toast.LENGTH_SHORT).show();
+                intent.setClass(PracticeActivity.this, Lesson4Activity.class);
                 break;
             case 2:
                 intent.setClass(PracticeActivity.this, Lesson8Activity.class);

@@ -3,9 +3,8 @@ package com.prm.android.kirakira.Utility;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import com.prm.android.kirakira.Controller.RegisterActivity;
+
 import com.prm.android.kirakira.R;
 
 /**
@@ -22,6 +21,14 @@ public class DialogUtil implements View.OnClickListener {
 //        errorDialog.setTitle(context.getString(R.string.dialog_error_title));
         errorDialog.findViewById(R.id.dialog_ok).setOnClickListener(this);
         tvError = (TextView) errorDialog.findViewById(R.id.dialog_info_error);
+    }
+
+    public void setButtonCorrectColor(){
+        errorDialog.findViewById(R.id.dialog_ok).setBackgroundResource(R.color.green);
+    }
+
+    public void setButtonErrorColor(){
+        errorDialog.findViewById(R.id.dialog_ok).setBackgroundResource(R.color.dialog_cancel_bgcolor);
     }
 
     public void showErrorDialog(String message) {
